@@ -28,12 +28,14 @@ console.log(full);
 {
 	word: 'cenobitic', 	// original word without any modification just lowercased
 	// scoring how common this variation is along other variations
-	// 1: it's the most common
-	// 0.87: less than the first one but can be accepted in modern writings
-	// 0.75: challenged
-	// 0.5: uncommon
-	// 0.25: very uncommon, might be present only in old texts
-	scoreUK: 0.75,
+	// 1: the correct one to use / the most common
+	// 0.87: frequent usually, the same for US/UK
+	// 0.3: infrequent
+	// 0.2: uncommon
+	// 0.1: very uncommon, might be present only in old texts
+	// 0: this variation is rejected
+	// -1: the word you passed isn't present in the database (might be not having a spelling variations)
+	scoreUK: 0.3,
 	scoreUS: 1,
 	// whether or not the word has variations
 	hasVariations: true,
@@ -73,6 +75,30 @@ Method | Example | Returns | Description
 *toUK* | `new spellingVariations("Anglify").toUK();` | `{String}` | **@returns:** UK variant of the word
 *toUS* | `new spellingVariations("Anglify").toUS();` | `{String}` | **@returns:** US variant of the word
 
+
+## Frequency Scores
+
+One might think that the word `theatre` is present solely in Britain's texts and the word `theater` is in American's text, however that's not the case. If you tracked the word `theatre` in google N-Gram viewer, you'll see that it has been used in American's text but less frequently than `theater`. Same case applies for many word spelling variations out there.
+
+<iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=theater&year_start=1800&year_end=2000&corpus=17&smoothing=3&share=&direct_url=t1%3B%2Ctheater%3B%2Cc0" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
+
+<iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=theatre&year_start=1800&year_end=2000&corpus=17&smoothing=3&share=&direct_url=t1%3B%2Ctheatre%3B%2Cc0" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
+
+For this reason, this library will rather tell you the frequency score (which is calculated by comparison with other spelling variations) rather than whether this spelling variation is British or American.
+
+And these are the possible scores:
+
+- `1`: the correct one to use / the most common
+- `0.87`: frequent, the same for US/UK
+- `0.3`: infrequent
+- `0.2`: uncommon
+- `0.1`: very uncommon, might be present only in old texts
+- `0`: this variation is rejected in the (UK/US).
+- `-1`: the word you passed isn't present in the database.
+
+The score `-1` does **not** mean that this word isn't a dictionary word, absolutely not! it only means that this word doesn't have a spelling variations.
+
+For example, the words `anything`, `everything`, `only` will have a score of `-1` since those don't really have a spelling variation and they are the same for American and British spelling.
 
 ## Contributing
 
