@@ -78,7 +78,7 @@ Method | Example | Returns | Description
 
 ## Frequency Scores
 
-One might think that the word `theatre` is present solely in Britain's texts and the word `theater` is in American's text, however that's not the case. If you tracked the word `theatre` in google N-Gram viewer, you'll see that it has been used in American's text but less frequently than `theater`. Same case applies for many word spelling variations out there.
+One might think that the word `theatre` is present solely in British English text and the word `theater` is in American English text, however that's not the case. If you tracked the word `theatre` in Google's N-Gram viewer (screenshot below), you'll see that it has been used in American English text as well as the the word `theater`, yet the word `theater` has been raising in popularity in American English text more than `theatre`. Same case applies for many word spelling variations out there.
 
 ![http://puu.sh/t54v6/fd05234a0a.png](http://puu.sh/t54v6/fd05234a0a.png)
 
