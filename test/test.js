@@ -8,10 +8,10 @@ describe('Spelling Variations', function () {
 			assert.equal(obj.word,"rontgenised");
 		});
 		it('scoreUK', function () {
-			assert.equal(obj.scoreUK,0.5);
+			assert.equal(obj.scoreUK,0.2);
 		});
 		it('scoreUS', function () {
-			assert.equal(obj.scoreUS,0.25);
+			assert.equal(obj.scoreUS,0.1);
 		});
 		it('hasVariations', function () {
 			assert.equal(obj.hasVariations,true);
@@ -65,10 +65,10 @@ describe('Spelling Variations', function () {
 			assert.equal(obj.word,"grecise");
 		});
 		it('scoreUK', function () {
-			assert.equal(obj.scoreUK,0.25);
+			assert.equal(obj.scoreUK,0.1);
 		});
 		it('scoreUS', function () {
-			assert.equal(obj.scoreUS,0.75);
+			assert.equal(obj.scoreUS,0.3);
 		});
 		it('hasVariations', function () {
 			assert.equal(obj.hasVariations,true);
