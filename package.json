@@ -1,6 +1,6 @@
 {
   "name": "spelling-variations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "gives you a word's spelling variations with detection whether it's a UK (English, british) or US (American) variations, also gives you the preferred variation.",
   "main": "./dist/spelling-variations.js",
   "scripts": {
