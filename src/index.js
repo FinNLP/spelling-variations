@@ -78,8 +78,8 @@ function analyse(word) {
 	const USi = !!~US1i ? US1i : !!~US2i ? US2i : !!~US3i ? US3i : !!~US4i ? US4i : !!~UKUSi ? UKUSi : false;
 
 	// found or not
-	result.scoreUK = !!~UK1i ? 1 : !!~UKUSi ? 0.87 : !!~UK2i ? 0.75 : !!~UK3i ? 0.5 : !!~UK4i ? 0.25 : -1;
-	result.scoreUS = !!~US1i ? 1 : !!~UKUSi ? 0.87 : !!~US2i ? 0.75 : !!~US3i ? 0.5 : !!~US4i ? 0.25 : -1;
+	result.scoreUK = !!~UK1i ? 1 : !!~UKUSi ? 0.87 : !!~UK2i ? 0.3 : !!~UK3i ? 0.2 : !!~UK4i ? 0.1 : USi? 0 : -1;
+	result.scoreUS = !!~US1i ? 1 : !!~UKUSi ? 0.87 : !!~US2i ? 0.3 : !!~US3i ? 0.2 : !!~US4i ? 0.1 : UKi? 0 : -1;
 
 	if(!(UKi||USi)) return result;
 
