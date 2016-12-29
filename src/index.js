@@ -42,8 +42,8 @@ export default spellingVariations;
 import list from "./list.js";
 
 function analyse(word) {
-	
-	word = word.toLowerCase();
+
+	word = (word || "").toLowerCase();
 
 	const result = {
 		word,
