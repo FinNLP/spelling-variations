@@ -80,9 +80,10 @@ Method | Example | Returns | Description
 
 One might think that the word `theatre` is present solely in Britain's texts and the word `theater` is in American's text, however that's not the case. If you tracked the word `theatre` in google N-Gram viewer, you'll see that it has been used in American's text but less frequently than `theater`. Same case applies for many word spelling variations out there.
 
-<iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=theater&year_start=1800&year_end=2000&corpus=17&smoothing=3&share=&direct_url=t1%3B%2Ctheater%3B%2Cc0" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
+![http://puu.sh/t54v6/fd05234a0a.png](http://puu.sh/t54v6/fd05234a0a.png)
 
-<iframe name="ngram_chart" src="https://books.google.com/ngrams/interactive_chart?content=theatre&year_start=1800&year_end=2000&corpus=17&smoothing=3&share=&direct_url=t1%3B%2Ctheatre%3B%2Cc0" width=900 height=500 marginwidth=0 marginheight=0 hspace=0 vspace=0 frameborder=0 scrolling=no></iframe>
+
+![http://puu.sh/t54ze/765341b8af.png](http://puu.sh/t54ze/765341b8af.png)
 
 For this reason, this library will rather tell you the frequency score (which is calculated by comparison with other spelling variations) rather than whether this spelling variation is British or American.
 
