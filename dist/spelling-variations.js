@@ -69491,8 +69491,8 @@ spellingVariations.prototype.analyze = function() {return this.data;};
 **/
 
 function analyse(word) {
-	
-	word = word.toLowerCase();
+
+	word = (word || "").toLowerCase();
 
 	var result = {
 		word: word,
