@@ -84,3 +84,7 @@ Method | Example | Returns | Description
 * build `node build/build`
 * test `node test/test`
 
+
+--------------
+
+License: **The MIT License**.
