@@ -22,7 +22,7 @@ rollup.rollup({
 	
 	const UMD = bundle.generate({
 		format:"umd",
-		moduleName:"spelling-variations"
+		moduleName:"spellingVariations"
 	});
 	console.log("Writing file: full version...");
 	fs.writeFileSync(distDir+"spelling-variations.js",UMD.code);
