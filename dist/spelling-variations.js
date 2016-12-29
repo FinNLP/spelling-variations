@@ -69453,8 +69453,6 @@ var list = {
 };
 
 var spellingVariations = function (word) {
-	if(!this) { throw new Error("Spelling variation class has to be initialized with a 'new' keyword"); }
-	if(!word) { throw new Error("You have to pass a word to be detected"); }
 	this.data = analyse(word);
 };
 
@@ -69498,8 +69496,8 @@ function analyse(word) {
 
 	var result = {
 		word: word,
-		scoreUK:0,
-		scoreUS:0,
+		scoreUK:-1,
+		scoreUS:-1,
 		hasVariations:false,
 		Wordi:-1,
 		UKPrefered:"",
@@ -69529,8 +69527,8 @@ function analyse(word) {
 	var USi = !!~US1i ? US1i : !!~US2i ? US2i : !!~US3i ? US3i : !!~US4i ? US4i : !!~UKUSi ? UKUSi : false;
 
 	// found or not
-	result.scoreUK = !!~UK1i ? 1 : !!~UKUSi ? 0.87 : !!~UK2i ? 0.75 : !!~UK3i ? 0.5 : !!~UK4i ? 0.25 : 0;
-	result.scoreUS = !!~US1i ? 1 : !!~UKUSi ? 0.87 : !!~US2i ? 0.75 : !!~US3i ? 0.5 : !!~US4i ? 0.25 : 0;
+	result.scoreUK = !!~UK1i ? 1 : !!~UKUSi ? 0.87 : !!~UK2i ? 0.75 : !!~UK3i ? 0.5 : !!~UK4i ? 0.25 : -1;
+	result.scoreUS = !!~US1i ? 1 : !!~UKUSi ? 0.87 : !!~US2i ? 0.75 : !!~US3i ? 0.5 : !!~US4i ? 0.25 : -1;
 
 	if(!(UKi||USi)) { return result; }
 
