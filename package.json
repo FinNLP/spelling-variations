@@ -1,6 +1,6 @@
 {
   "name": "spelling-variations",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "gives you a word's spelling variations with detection whether it's a UK (English, british) or US (American) variations, also gives you the preferred variation.",
   "main": "./dist/spelling-variations.js",
   "scripts": {
@@ -31,10 +31,10 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexcorvi/spelling-variations.git"
+    "url": "git+https://github.com/finnlp/spelling-variations.git"
   },
   "bugs": {
-    "url": "https://github.com/alexcorvi/spelling-variations/issues"
+    "url": "https://github.com/finnlp/spelling-variations/issues"
   },
-  "homepage": "https://github.com/alexcorvi/spelling-variations#readme"
+  "homepage": "https://github.com/finnlp/spelling-variations#readme"
 }
