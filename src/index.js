@@ -1,3 +1,6 @@
+const bydictionary = require('./bydictionary.json');
+const bypattern = require('./bypattern.js');
+
 const spellingVariations = function (word) {
 	this.data = analyse(word);
 };
@@ -26,10 +29,8 @@ spellingVariations.prototype.toUK = function() {return this.data.UKPrefered || t
 spellingVariations.prototype.toUS = function() {return this.data.USPrefered || this.data.word;};
 // @return {Object} all the info above
 spellingVariations.prototype.analyse = function() {return this.data;};
-// a us variation :)
+// a us alias for the above function :)
 spellingVariations.prototype.analyze = function() {return this.data;};
-
-export default spellingVariations;
 
 
 /**
@@ -38,9 +39,6 @@ export default spellingVariations;
  * lifting of finding the variations and the class and such..
  * 
 **/
-
-import list from "./list.js";
-
 function analyse(word) {
 
 	word = (word || "").toLowerCase();
@@ -50,10 +48,9 @@ function analyse(word) {
 		scoreUK:-1,
 		scoreUS:-1,
 		hasVariations:false,
-		Wordi:-1,
-		UKPrefered:"",
-		USPrefered:"",
-		commonVariation:"",
+		UKPrefered:word,
+		USPrefered:word,
+		commonVariation:word,
 		UKVariations:[],
 		USVariations:[],
 		variations:[],
@@ -61,53 +58,44 @@ function analyse(word) {
 		analyze:analyse
 	};
 
-	// get indexes
-	const UK1i = list.UK1.indexOf(word);
-	const UK2i = list.UK2.indexOf(word);
-	const UK3i = list.UK3.indexOf(word);
-	const UK4i = list.UK4.indexOf(word);
-	const US1i = list.US1.indexOf(word);
-	const US2i = list.US2.indexOf(word);
-	const US3i = list.US3.indexOf(word);
-	const US4i = list.US4.indexOf(word);
-	const UKUSi = list.UKUS.indexOf(word);
+	var resultArr = [];
+	var dictionaryEntry = bydictionary[word];
+	var patternEntry = bypattern(word);
+	if(dictionaryEntry) resultArr = dictionaryEntry.split("|");
+	else if(patternEntry) resultArr = patternEntry;
+	else return result;
 
+	// resultArr reference:
+	// 0: UK1		4: US1
+	// 1: UK2		5: US2
+	// 2: UK3		6: US3
+	// 3: UK4		7: US4		8:UKUS
+	
 
-	// find the nearest UK and US index
-	const UKi = !!~UK1i ? UK1i : !!~UK2i ? UK2i : !!~UK3i ? UK3i : !!~UK4i ? UK4i : !!~UKUSi ? UKUSi : false;
-	const USi = !!~US1i ? US1i : !!~US2i ? US2i : !!~US3i ? US3i : !!~US4i ? US4i : !!~UKUSi ? UKUSi : false;
+	result.hasVariations = true;
+	result.variations = filterOut(resultArr,word);
+	result.UKPrefered = resultArr[0];
+	result.USPrefered = resultArr[4];
+	result.commonVariation = resultArr[8] || "";
+	result.UKVariations = resultArr.filter((e,i)=>e&&(i<4||i===8)&&e!==word);
+	result.USVariations = resultArr.filter((e,i)=>e&&(i>3||i===8)&&e!==word);
 
-	// found or not
-	result.scoreUK = !!~UK1i ? 1 : !!~UKUSi ? 0.87 : !!~UK2i ? 0.3 : !!~UK3i ? 0.2 : !!~UK4i ? 0.1 : USi? 0 : -1;
-	result.scoreUS = !!~US1i ? 1 : !!~UKUSi ? 0.87 : !!~US2i ? 0.3 : !!~US3i ? 0.2 : !!~US4i ? 0.1 : UKi? 0 : -1;
+	if(resultArr.indexOf(word) === 8) {
+		result.scoreUK = 0.87;
+		result.scoreUS = 0.87;
+	}
+	
+	else {
+		var UKi = resultArr.slice(0,4).indexOf(word);
+		var USi = resultArr.slice(4,8).indexOf(word);
+		
+		if(UKi === -1) result.scoreUK = 0;
+		else result.scoreUK = (4-UKi)*0.25;
 
-	if(!(UKi||USi)) return result;
+		if(USi === -1) result.scoreUS = 0;
+		else result.scoreUS = (4-USi)*0.25;
+	}
 
-	// word index .. used to found the variations
-	result.Wordi = UKi || USi;
-
-	// preferred variations
-	result.UKPrefered = list.UK1[result.Wordi];
-	result.USPrefered = list.US1[result.Wordi];
-
-	// get all variations
-	result.UKVariations = removeDuplicates(filterOut([
-		result.UKPrefered,
-		list.UK2[result.Wordi],
-		list.UK3[result.Wordi],
-		list.UK4[result.Wordi]
-	],word));
-
-	result.USVariations = removeDuplicates(filterOut([
-		result.USPrefered,
-		list.US2[result.Wordi],
-		list.US3[result.Wordi],
-		list.US4[result.Wordi]
-	],word));
-
-	result.commonVariation = list.UKUS[UKUSi] || "";
-	result.variations = removeDuplicates(filterOut([...result.UKVariations,...result.USVariations,result.commonVariation],word));
-	result.hasVariations = !!result.variations.length;
 	return result;
 }
 
@@ -115,9 +103,4 @@ function filterOut(arr,word){
 	return arr.filter((x)=>x&&x!==word);
 }
 
-function removeDuplicates(arr){
-	return arr.reduce((newArr,item)=>{
-		if(newArr.indexOf(item) === -1) newArr.push(item);
-		return newArr;
-	},[]);
-}
+module.exports = spellingVariations;
