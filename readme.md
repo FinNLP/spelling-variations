@@ -30,17 +30,15 @@ console.log(full);
 	// scoring how common this variation is along other variations
 	// 1: the correct one to use / the most common
 	// 0.87: frequent usually, the same for US/UK
-	// 0.3: infrequent
-	// 0.2: uncommon
-	// 0.1: very uncommon, might be present only in old texts
+	// 0.75: infrequent
+	// 0.5: uncommon
+	// 0.25: very uncommon, might be present only in old texts
 	// 0: this variation is rejected
 	// -1: the word you passed isn't present in the database (might be not having a spelling variations)
-	scoreUK: 0.3,
+	scoreUK: 0.75,
 	scoreUS: 1,
 	// whether or not the word has variations
 	hasVariations: true,
-	// index of the word in the database (mainly used for debugging and testing)
-	Wordi: 1073,
 	// the preferred variation for the UK
 	UKPrefered: 'coenobitic',
 	// the preferred variation for the US
@@ -91,9 +89,9 @@ And these are the possible scores:
 
 - `1`: the correct one to use / the most common
 - `0.87`: frequent, the same for US/UK
-- `0.3`: infrequent
-- `0.2`: uncommon
-- `0.1`: very uncommon, might be present only in old texts
+- `0.75`: infrequent
+- `0.5`: uncommon
+- `0.25`: very uncommon, might be present only in old texts
 - `0`: this variation is rejected in the (UK/US).
 - `-1`: the word you passed isn't present in the database.
 
