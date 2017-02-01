@@ -1,10 +1,10 @@
 {
   "name": "spelling-variations",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "gives you a word's spelling variations with detection whether it's a UK (English, british) or US (American) variations, also gives you the preferred variation.",
-  "main": "./dist/spelling-variations.js",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/test"
   },
   "author": "Alex Corvi <alex@arrayy.com>",
   "license": "MIT",
