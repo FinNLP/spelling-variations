@@ -1,17 +1,18 @@
-const spellingVariations = require('../dist/spelling-variations.js');
+const spellingVariations = require('../src/index.js');
 const assert = require('assert');
 
 describe('Spelling Variations', function () {
+	
 	describe('rontgenised (not preferred by any accent)', function () {
 		var obj = new spellingVariations("rontgenised").analyze();
 		it('word', function () {
 			assert.equal(obj.word,"rontgenised");
 		});
 		it('scoreUK', function () {
-			assert.equal(obj.scoreUK,0.2);
+			assert.equal(obj.scoreUK,0.5);
 		});
 		it('scoreUS', function () {
-			assert.equal(obj.scoreUS,0.1);
+			assert.equal(obj.scoreUS,0.25);
 		});
 		it('hasVariations', function () {
 			assert.equal(obj.hasVariations,true);
@@ -58,17 +59,16 @@ describe('Spelling Variations', function () {
 		});
 	});
 
-
 	describe('grecise (least favorite for the brits)', function () {
 		var obj = new spellingVariations("grecise").analyze();
 		it('word', function () {
 			assert.equal(obj.word,"grecise");
 		});
 		it('scoreUK', function () {
-			assert.equal(obj.scoreUK,0.1);
+			assert.equal(obj.scoreUK,0.25);
 		});
 		it('scoreUS', function () {
-			assert.equal(obj.scoreUS,0.3);
+			assert.equal(obj.scoreUS,0.75);
 		});
 		it('hasVariations', function () {
 			assert.equal(obj.hasVariations,true);
@@ -86,7 +86,25 @@ describe('Spelling Variations', function () {
 			assert.equal(obj.USVariations[2],'graecise');
 		});
 	});
+
+	describe('pattern recognition', function () {
+		it('ellous$', function () {
+			assert.equal(new spellingVariations("coloellous").analyze().USVariations[0],"coloelous");
+		});
+		it('elous$', function () {
+			assert.equal(new spellingVariations("coloelous").analyze().UKVariations[0],"coloellous");
+		});
+		it('sation$', function () {
+			assert.equal(new spellingVariations("mesovasation").analyze().USVariations[0],"mesovazation");
+		});
+		it('zation$', function () {
+			assert.equal(new spellingVariations("mesovazation").analyze().UKVariations[0],"mesovasation");
+		});
+		// TODO: write more tests about patterns
+	});
+
 });
+
 
 describe('API testing', function () {
 	it('scoreUK', function () {
@@ -125,13 +143,12 @@ describe('API testing', function () {
 });
 
 describe('performance test', function (done) {
-	it('less than 500 ms for 100 words', function (done) {
+	it('less than 500 ms for 10000 words', function (done) {
 		var t0 = Date.now();
-		var a = 100;
-		while(a){
+		for (var i = 10000; i; i--) {
 			new spellingVariations("rontgenised").analyze();
-			a--;
 		}
+		this.test.title = this.test.title + ": " + (Date.now() - t0);
 		done(assert.equal(Date.now() - t0 < 500,true));
 	});
 });
