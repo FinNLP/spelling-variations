@@ -11,6 +11,4 @@ Thumbs.dbma
 # Node.js Files #
 ######################
 /node_modules/*
-*.log
-.jshintrc
-legacy.js
+/dist/*

@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "./dist/",
+        "target":"ES6",
+        "strictNullChecks":true,
+        "alwaysStrict":true,
+        "forceConsistentCasingInFileNames":true,
+        "declaration":true
+    },
+    "files": [
+        "./src/index.ts"
+    ],
+    "exclude": [
+        "./node_modules/*"
+    ]
+}

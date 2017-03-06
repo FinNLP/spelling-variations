@@ -1,4 +1,6 @@
-{
+export const dict:{
+    [key:string]:string
+} = {
     "abridgeable": "abridgeable|abridgable|||abridgable|abridgeable|||",
     "absinths": "absinths|absinthes|||absinthes|absinths|||",
     "acarpellous": "acarpellous||||acarpelous|acarpellous|||",
@@ -14799,3 +14801,5 @@
     "summarists": "summarisers|summarizers|||summarizers|summarisers|||summarists",
     "towny": "townie|townee|||townee|townie|||towny"
 }
+
+export default dict;

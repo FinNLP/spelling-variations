@@ -40,9 +40,9 @@ console.log(full);
 	// whether or not the word has variations
 	hasVariations: true,
 	// the preferred variation for the UK
-	UKPrefered: 'coenobitic',
+	UKPreferred: 'coenobitic',
 	// the preferred variation for the US
-	USPrefered: 'cenobitic',
+	USPreferred: 'cenobitic',
 	// if there's a common variation between the US & UK
 	commonVariation: '',
 	// all UK variations of the word ordered by commonness
@@ -67,8 +67,8 @@ Method | Example | Returns | Description
 *USVariations* | `new spellingVariations("Anglify").USVariations();` | `{Array}` | **@returns:** US variations of the word
 *UKVariations* | `new spellingVariations("Anglify").UKVariations();` | `{Array}` | **@returns:** UK variations of the word
 *variations* | `new spellingVariations("Anglify").variations();` | `{Array}` | **@returns:** All of the word's variations
-*UKPrefered* | `new spellingVariations("Anglify").UKPrefered();` | `{String}` | **@returns:** UK's preferred variation
-*USPrefered* | `new spellingVariations("Anglify").USPrefered();` | `{String}` | **@returns:** US's preferred variation
+*UKPreferred* | `new spellingVariations("Anglify").UKPreferred();` | `{String}` | **@returns:** UK's preferred variation
+*USPreferred* | `new spellingVariations("Anglify").USPreferred();` | `{String}` | **@returns:** US's preferred variation
 *commonVariation* | `new spellingVariations("Anglify").commonVariation();` | `{String}` | **@returns:** A variation that is common for the US and the UK
 *toUK* | `new spellingVariations("Anglify").toUK();` | `{String}` | **@returns:** UK variant of the word
 *toUS* | `new spellingVariations("Anglify").toUS();` | `{String}` | **@returns:** US variant of the word
