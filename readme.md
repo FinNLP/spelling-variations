@@ -13,9 +13,8 @@ npm install --save spelling-variations
 Now you can use the library as you wish:
 
 ```javascript
-
-// for node environments:
-const spellingVariations = require("spelling-variations");
+// import the module
+import spellingVariations from "spelling-variations";
 
 var uk_version = new spellingVariations("theater").toUK;
 console.log(uk_version);
