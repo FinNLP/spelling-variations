@@ -100,13 +100,6 @@ const patterns:ReplacementPattern[] = [
 	},
 
 	{
-		regex:/(v|m|b|l|d|i|n|c|g|p)our/,
-		originalIndex:[0,5],
-		replacementIndex:[4],
-		replacementString:"$1or"
-	},
-
-	{
 		regex:/(m|c)oul/,
 		originalIndex:[0,5],
 		replacementIndex:[4],
@@ -119,6 +112,21 @@ const patterns:ReplacementPattern[] = [
 		replacementIndex:[4],
 		replacementString:"eled"
 	},
+
+	{
+		regex:/([cpviglnbmd])(our)(ed$|ing$|s$|al$|ally$|ful$|$)/,
+		originalIndex:[0],
+		replacementIndex:[4],
+		replacementString:"$1or$3"
+	},
+
+	{
+		regex:/(v|m|b|l|d|i|n|c|g|p)our/,
+		originalIndex:[0,5],
+		replacementIndex:[4],
+		replacementString:"$1or"
+	},
+
 ];
 
 export default function (word:string):string[]|null {
