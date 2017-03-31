@@ -1,4 +1,4 @@
-const spellingVariations = require('../src/index.js');
+const spellingVariations = require('../dist/index.js').default;
 const assert = require('assert');
 
 describe('Spelling Variations', function () {
@@ -18,10 +18,10 @@ describe('Spelling Variations', function () {
 			assert.equal(obj.hasVariations,true);
 		});
 		it('UKPrefered', function () {
-			assert.equal(obj.UKPrefered,'roentgenises');
+			assert.equal(obj.UKPreferred,'roentgenises');
 		});
 		it('USPrefered', function () {
-			assert.equal(obj.USPrefered,'roentgenizes');
+			assert.equal(obj.USPreferred,'roentgenizes');
 		});
 		it('UKVariations', function () {
 			assert.equal(obj.UKVariations[0],'roentgenises');
@@ -45,11 +45,11 @@ describe('Spelling Variations', function () {
 		it('hasVariations', function () {
 			assert.equal(obj.hasVariations,true);
 		});
-		it('UKPrefered', function () {
-			assert.equal(obj.UKPrefered,'acclimatising');
+		it('UKPreferred', function () {
+			assert.equal(obj.UKPreferred,'acclimatising');
 		});
-		it('USPrefered', function () {
-			assert.equal(obj.USPrefered,'acclimatizing');
+		it('USPreferred', function () {
+			assert.equal(obj.USPreferred,'acclimatizing');
 		});
 		it('UKVariations', function () {
 			assert.equal(obj.UKVariations[1],'acclimatizing');
@@ -74,10 +74,10 @@ describe('Spelling Variations', function () {
 			assert.equal(obj.hasVariations,true);
 		});
 		it('UKPrefered', function () {
-			assert.equal(obj.UKPrefered,'graecise');
+			assert.equal(obj.UKPreferred,'graecise');
 		});
 		it('USPrefered', function () {
-			assert.equal(obj.USPrefered,'grecize');
+			assert.equal(obj.USPreferred,'grecize');
 		});
 		it('UKVariations', function () {
 			assert.equal(obj.UKVariations[1],'graecize');
@@ -123,10 +123,10 @@ describe('API testing', function () {
 		assert.equal(new spellingVariations("moralize").UKVariations()[0],"moralise");
 	});
 	it('UKPrefered', function () {
-		assert.equal(new spellingVariations("moralize").UKPrefered(),"moralise");
+		assert.equal(new spellingVariations("moralize").UKPreferred(),"moralise");
 	});
 	it('USPrefered', function () {
-		assert.equal(new spellingVariations("moralize").USPrefered(),"moralize");
+		assert.equal(new spellingVariations("moralize").USPreferred(),"moralize");
 	});
 	it('variations', function () {
 		assert.equal(new spellingVariations("molding").variations().length,1);
