@@ -1,4 +1,4 @@
-export const dict:{[key:string]:string} = {
+const dictUK:{[key:string]:string} = {
 	aeroplane: "aeroplane||||airplane||||",
 	aeroplanes: "aeroplanes||||airplanes||||",
 	aesthetical: "aesthetic|esthetic|esthetical||esthetic|aesthetic|aesthetical||",
@@ -80,6 +80,7 @@ export const dict:{[key:string]:string} = {
 	neighbourliness: "neighbourliness||||neighborliness||||",
 	neighbourly: "neighbourly||||neighborly||||",
 	nonunionised: "nonunionised||||nonunionized||||",
+	odour: "odour||||odor||||",
 	practise: "practise|practice|||practice|practise|||",
 	practised: "practised|practiced|||practiced|practised|||",
 	practises: "practises|practices|||practices|practises|||",
@@ -208,6 +209,20 @@ export const dict:{[key:string]:string} = {
 	seizing: "seising||||seizing|seising|||",
 	vise: "vice||||vise|vice|||",
 	vises: "vices||||vises|vices|||"
+};
+
+let dictUS:{[key:string]:string} = {};
+Object.keys(dictUK).forEach(key => {
+	const [ uk1, uk2, uk3, uk4, us1, us2, us3, us4, ukus ] = dictUK[key].split('|');
+	if(us1) dictUS[us1] = dictUK[key];
+	if(us2) dictUS[us2] = dictUK[key];
+	if(us3) dictUS[us3] = dictUK[key];
+	if(us4) dictUS[us4] = dictUK[key];
+});
+
+export const dict = {
+	...dictUK,
+	...dictUS,
 };
 
 export default dict;
