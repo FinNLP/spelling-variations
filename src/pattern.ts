@@ -114,10 +114,24 @@ const patterns:ReplacementPattern[] = [
 	},
 
 	{
+		regex:/eled$/,
+		originalIndex:[4],
+		replacementIndex:[0,5],
+		replacementString:"elled"
+	},
+
+	{
 		regex:/([cpviglnbmd])(our)(ed$|ing$|s$|al$|ally$|ful$|$)/,
 		originalIndex:[0],
 		replacementIndex:[4],
 		replacementString:"$1or$3"
+	},
+
+	{
+		regex:/([cpviglnbm])(or)(ed$|ing$|s$|al$|ally$|ful$|$)/,
+		originalIndex:[4],
+		replacementIndex:[0],
+		replacementString:"$1our$3"
 	},
 
 	{
